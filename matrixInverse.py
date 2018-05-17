@@ -8,10 +8,11 @@ def swapRows(a, b, c, d):
 # i = column index
 def notNullColumns(a, b, i):
     j = 0
-    while a[i][i] == 0 and j < len(a):
-        if a[j][i] != 0:
-            swapRows(a, b, i, j)
-        j += 1
+    if a[i][i] == 0:
+        while a[i][i] == 0 and j < len(a):
+            if a[j][i] != 0 and a[i][j] != 0:
+                swapRows(a, b, i, j)
+            j += 1
 
 print("---Inverse of the Matrix---\n")
 
@@ -27,19 +28,14 @@ for i in range(n):
     b[i][i] = 1
 
 i = 0
-flag = 1
-while i < n and flag == 1:
-    flag = notNullColumns(a, b, i)
-
+for i in range(n):
+    notNullColumns(a, b, i)
+print(a)
 i = 0
 while i < n and a[i][i] != 0 :
     i += 1
-flag = 1
-if i != n:
-    print("The matrix can not be reversed.")
-    flag = 0
 
-if flag == 1:
+if i == n:
     for i in range(n):
         for j in range(n):
             if i != j:
@@ -56,4 +52,6 @@ if flag == 1:
         for j in range(n):
             print(b[i][j], end='    ')
         print()
-
+    print(a)
+else:
+    print("The matrix can not be reversed.")
