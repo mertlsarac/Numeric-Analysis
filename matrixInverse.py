@@ -22,7 +22,6 @@ print("(number of rows = number of columns = n)")
 n = int(input("N: "))
 
 a = [[float(input("M[{}][{}]: ".format(j + 1, i + 1))) for i in range(n)] for j in range(n)]
-# a = [[1, 7, 9], [0, 1, 0], [0, 0, 1]]
 b = [[0 for i in range(n)] for j in range(n)]
 for i in range(n):
     b[i][i] = 1
@@ -30,7 +29,7 @@ for i in range(n):
 i = 0
 for i in range(n):
     notNullColumns(a, b, i)
-print(a)
+
 i = 0
 while i < n and a[i][i] != 0 :
     i += 1
@@ -52,6 +51,5 @@ if i == n:
         for j in range(n):
             print(b[i][j], end='    ')
         print()
-    print(a)
 else:
     print("The matrix can not be reversed.")
